@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<title>Math Quiz</title>
+	<link rel="stylesheet" href="style3.css">
+</head>
+<body>
+<div class="container">
+	<div class="column" >
+	<h1><span>Math </span>Quiz</h1>
+
+	<button onclick="generateTable()">Multiplication Table</button>
+	<button onclick="getAddQuestions()">Addition Quiz</button>
+	<button onclick="getSubQuestions()">Subtraction Quiz</button>
+	<button onclick="getMultiQuestions()">Multiplication Quiz</button>
+	<button onclick="getDivQuestions()">Division Quiz</button>
+	<div id="mult"></div>
+	<div id="grade"></div>
+	</div>
+	<div id="quiz" class="column">
+	</div>
+</div>
+<script src="questGen.js"></script>
+	<script>
+		function generateTable() {
+			let N;
+			let rowNumber;
+			let table = "<table>";
+			for (rowNumber = 1; rowNumber <= 12; rowNumber++) {
+			table += "<tr>";
+			for (N = 1; N <= 12; N++) {
+			table += "<td>" + N * rowNumber + "&nbsp;&nbsp;</td>";
+		}
+			table += "</tr>";
+		}
+			table += "</table>";
+			const ff = document.getElementById("mult");
+			ff.innerHTML = table;
+		}
+
+		function getAddQuestions() {
+			questions = [];
+			questG.createAdditionQuiz();
+			giveQuiz()
+			document.getElementById("q0").focus();
+		}
+		function getSubQuestions() {
+			questions = [];
+			questG.createSubtractionQuiz();
+			giveQuiz()
+			document.getElementById("q0").focus();
+		}
+		function getDivQuestions() {
+			questions = [];
+			questG.createDivisionQuiz();
+			giveQuiz()
+			document.getElementById("q0").focus();
+		}
+		function getMultiQuestions() {
+			questions = [];
+			questG.createMultiplicationQuiz();
+			giveQuiz()
+			document.getElementById("q0").focus();
+		}
+
+		function giveQuiz() {
+
+			let quizDiv = document.getElementById("quiz");
+			quizDiv.innerHTML='';
+
+			for (let i = 0; i < 10; i++) {
+				let questionNum = i + 1;
+				let questionText = questions[i].questionText;
+
+				let questionDiv = document.createElement("div");
+				let questionLabel = document.createElement("label");
+				let questionInput = document.createElement("input");
+				// let rowq = '<label>`Question ${questionNum}: ${questionText}`<input type="number" id="q${i}" name="q${i}"></label>'
+
+				questionLabel.innerHTML = `Question ${questionNum}: ${questionText}`;
+				questionInput.type = "number";
+				questionInput.id = `q${i}`;
+				questionInput.name = `q${i}`;
+
+				questionDiv.appendChild(questionLabel);
+				questionDiv.appendChild(questionInput);
+				// let rowq = questionLabel.innerHTML + questionInput.innerHTML;
+				// questionDiv.innerHTML=rowq;
+
+				quizDiv.appendChild(questionDiv);
+			}
+
+			let submitButton = document.createElement("button");
+			submitButton.innerHTML = "Submit Quiz";
+			submitButton.onclick = gradeQuiz;
+
+			quizDiv.appendChild(submitButton);
+		}
+
+		function gradeQuiz() {
+			let score = 0;
+
+			for (let i = 0; i < 10; i++) {
+				let userAnswer = parseInt(document.getElementById(`q${i}`).value);
+
+				if (userAnswer === questions[i].correctAnswer) {
+					score++;
+				}
+			}
+
+			// alert(`You scored ${score} out of 10!`);
+			let quizGrade = document.getElementById("grade");
+			quizGrade.innerHTML=`You scored ${score} out of 10!`;
+
+		}
+		let questions = [];
+		let questG = new questGen();
+	</script>
+</body>
+</html>

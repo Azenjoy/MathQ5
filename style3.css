@@ -1,0 +1,106 @@
+
+body{
+
+	background-color: tan;
+	color: brown;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-shadow: 0 0 3px yellow;
+	font-family: sans-serif;
+	margin: 10px;
+	}
+	input, label{
+		/*position: relative;*/
+		float: left;
+	font-size: 25px;
+	font-family: sans-serif;
+		border-radius: 10px;
+		/*opacity: 0.7;*/
+		/*text-shadow: 0 0 1px yellow;"*/
+	color: brown;
+		background: none;
+	/*background-image: linear-gradient(20deg, sandybrown, tan);*/
+	border-color: sienna;
+		/*margin-top: 10px;*/
+		margin: 10px;
+		text-align: left;
+
+
+	}
+/*input[type="number"] {*/
+/*	!*width: 3rem;*!*/
+/*	float: right;*/
+/*	margin: 10px 10px 10px 10px;*/
+
+/*}*/
+	h1,title{
+		font-size: 35px;
+		margin-top: -5px;
+	}
+	span{
+		color: orange;
+	}
+	nav a, button{
+		text-decoration: none;
+		text-transform: capitalize;
+		border: none;
+		color: brown;
+		font-size: 30px;
+		font-weight: 600;
+		padding:0 5px;
+		margin: 10px;
+		position: relative;
+		background: none;
+	}
+	
+	nav a, button:hover{
+		color: red;
+	}
+	nav a, button::before{
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 0;
+		height: 3px;
+		/*background-color: brown;*/
+		background-color: brown;
+		transition: all .5s ;
+	}
+	nav a, button:hover::before{
+		width: 100%;
+		
+	}
+	h2{
+		font-size: 50px;
+		/* margin-top: -100px; */
+	}
+	span{
+		color: red;
+	}
+	p{
+		font-size: 25px;
+		/* margin-top: -100px; */
+		margin: 15px;
+	}
+	ul{
+		font-size: 25px;
+		color: #5c4c42;
+	}
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.column {
+	flex-basis: calc(50% - 10px);
+}
+#quiz {
+	/*align-items: end;*/
+	/*background-image: linear-gradient(20deg, sandybrown, tan);*/
+	/*opacity: 0.2;*/
+	/*background-image: linear-gradient(20deg, sandybrown, rgb(210,180,140,15%));*/
+}
